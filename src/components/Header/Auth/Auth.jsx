@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable max-len */
-
+import PropTypes from 'prop-types';
 import React from 'react';
 import style from './Auth.module.css';
 
@@ -14,3 +13,7 @@ export const Auth = ({auth}) => (
 		}
 	</button>
 );
+
+Auth.propTypes = {
+	auth: PropTypes.bool.isRequired
+};
