@@ -6,5 +6,9 @@ export const Layout = ({children}) =>
 	<div className={style.container}>{children}</div>;
 
 Layout.propTypes = {
-	children: PropTypes.node,
+	children: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.string,
+		PropTypes.object,
+	]),
 };

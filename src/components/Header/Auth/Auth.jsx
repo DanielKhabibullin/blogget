@@ -15,5 +15,5 @@ export const Auth = ({auth}) => (
 );
 
 Auth.propTypes = {
-	auth: PropTypes.bool.isRequired
+	auth: PropTypes.bool.isRequired,
 };
