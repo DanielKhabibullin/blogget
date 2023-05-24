@@ -41,14 +41,14 @@
 	--orange: #cc6633;
 	--blue: #285784;
 	--green: #5bb12c;
-	--white: hsl(0, 0%, 100%);
-	--grayF5: hsl(0, 0%, 96%);
-	--greyED: hsl(0, 0%, 93%);
-	--greyE6: hsl(0, 0%, 90%);
-	--greyD9: hsl(0, 0%, 85%);
-	--greyBF: hsl(0, 0%, 75%);
-	--grey99: hsl(0, 0%, 60%);
-	--grey66: hsl(0, 0%, 40%);
+	--white: #ffffff;
+	--grayF5: #f5f5f5;
+	--greyED: #ededed;
+	--greyE6: #e6e6e6;
+	--greyD9: #d9d9d9;
+	--greyBF: #bfbfbf;
+	--grey99: #999999;
+	--grey66: #666666;
 }
 
 html {

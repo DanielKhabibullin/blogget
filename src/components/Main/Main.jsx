@@ -1,4 +1,3 @@
-import React from 'react';
 import Layout from '../Layout';
 import style from './Main.module.css';
 import Tabs from './Tabs';

@@ -1,8 +1,9 @@
 .linkAuthor {
 	position: relative;
-	font-size: 12px;
+	/* font-size: 12px;
 	line-height: 14px;
-	color: #cc6633;
+	color: #cc6633; */
+	width: min-content;
 	transition: color 0.36s ease-in-out;
 }
 
@@ -10,8 +11,8 @@
 	color: #2d2d2d;
 }
 
-@media (min-width: 580px) {
+/* @media (min-width: 580px) {
 	.linkAuthor {
 		font-size: 14px;
 	}
-}
+} */

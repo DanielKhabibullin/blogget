@@ -1,11 +1,20 @@
 import style from './Rating.module.css';
 import PropTypes from 'prop-types';
 import React from 'react';
+import {Text} from '../../../../../UI/Text/Text.jsx';
 
 export const Rating = ({ups}) => (
 	<div className={style.rating}>
 		<button className={style.up} aria-label='Upvote rating' />
-		<p className={style.ups}>{ups}</p>
+		<Text As='p'
+			className={style.ups}
+			size={12}
+			tsize={16}
+			color='grey99'
+			weight='bold'
+		>
+			{ups}
+		</Text>
 		<button className={style.down} aria-label='Downvote rating' />
 	</div>
 );
