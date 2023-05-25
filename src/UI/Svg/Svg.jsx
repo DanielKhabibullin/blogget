@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 
-export const Svg = ({src, width, height, className}) => (
+const Svg = ({src, width, height, className}) => (
 	<svg
 		className={className}
 		width={width}
 		height={height}
+		viewBox={`0 0 ${width} ${height}`}
+		fill="currentColor"
 		xmlns="http://www.w3.org/2000/svg"
 	>
 		<use xlinkHref={src} />
@@ -12,9 +15,11 @@ export const Svg = ({src, width, height, className}) => (
 );
 
 Svg.propTypes = {
-	src: PropTypes.string.isRequired,
+	src: PropTypes.string,
 	width: PropTypes.number,
 	height: PropTypes.number,
 	className: PropTypes.string,
+	alt: PropTypes.string,
 };
 
+export default Svg;
