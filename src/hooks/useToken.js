@@ -24,6 +24,8 @@ export const useToken = (state) => {
 
 	const removeToken = () => {
 		localStorage.removeItem('bearer');
+		setToken('');
+		window.location.href = '/';
 	};
 
 	return [token, removeToken];
