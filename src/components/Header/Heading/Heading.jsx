@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './Heading.module.css';
-import {Text} from '../../../UI/Text/Text.jsx';
+import {Text} from '../../../UI/Text/Text';
 
 export const Heading = ({text}) =>
 	<Text As='h1'

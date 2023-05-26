@@ -1,7 +1,7 @@
 import style from './Rating.module.css';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {Text} from '../../../../../UI/Text/Text.jsx';
+import {Text} from '../../../../../UI/Text/Text';
 
 export const Rating = ({ups}) => (
 	<div className={style.rating}>

@@ -1,6 +1,6 @@
 import style from './Title.module.css';
 import PropTypes from 'prop-types';
-import {Text} from '../../../../../UI/Text/Text.jsx';
+import {Text} from '../../../../../UI/Text/Text';
 
 
 export const Title = ({title}) => (

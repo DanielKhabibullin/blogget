@@ -41,11 +41,16 @@ Text.propTypes = {
 	tsize: PropTypes.number,
 	dsize: PropTypes.number,
 	className: PropTypes.string,
+	dateTime: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string
+	]),
 	children: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.string,
 		PropTypes.object,
 		PropTypes.number,
+		PropTypes.node,
 	]),
 	href: PropTypes.string,
 	center: PropTypes.bool,

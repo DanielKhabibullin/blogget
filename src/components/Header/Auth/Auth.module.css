@@ -18,7 +18,7 @@
 .logout {
 	position: absolute;
 	top: 100%;
-	right: -3px;
+	right: 0;
 	background-color: var(--orange);
 	border: 0;
 	color: var(--white);

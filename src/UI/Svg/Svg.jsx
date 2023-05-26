@@ -1,25 +1,31 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+// imports
 
-const Svg = ({src, width, height, className}) => (
-	<svg
-		className={className}
-		width={width}
-		height={height}
-		viewBox={`0 0 ${width} ${height}`}
-		fill="currentColor"
-		xmlns="http://www.w3.org/2000/svg"
-	>
-		<use xlinkHref={src} />
-	</svg>
-);
+const SVGCollection = {
+	// Logo,
+	// Auth,
+	// Search,
+	// Top,
+	// Home,
+	// Hot,
+	// Best,
+	// Arrow,
+	// Delete,
+	// Up,
+	// Down,
+};
+
+const Svg = ({itemName, width, height, className}) => {
+	const Item = SVGCollection[itemName];
+	return <Item className={className} width={width} height={height} />;
+};
 
 Svg.propTypes = {
-	src: PropTypes.string,
+	itemName: PropTypes.string,
 	width: PropTypes.number,
 	height: PropTypes.number,
 	className: PropTypes.string,
-	alt: PropTypes.string,
 };
 
 export default Svg;

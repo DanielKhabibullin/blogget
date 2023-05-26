@@ -1,13 +1,11 @@
 import {useContext, useState} from 'react';
 import {urlAuth} from '../../../api/auth';
-import {authContext} from '../../../context/authContext.jsx';
-import {tokenContext} from '../../../context/tokenContext.jsx';
+import {authContext} from '../../../context/authContext';
 import {Text} from '../../../UI/Text/Text';
 import style from './Auth.module.css';
 import {ReactComponent as LoginIcon} from './img/login.svg';
 
 export const Auth = () => {
-	const {removeToken} = useContext(tokenContext);
 	const [showLogout, setShowLogout] = useState(false);
 	const {auth, clearAuth} = useContext(authContext);
 
@@ -15,11 +13,6 @@ export const Auth = () => {
 		setShowLogout(!showLogout);
 	};
 
-	const handleLogout = () => {
-		removeToken();
-
-		clearAuth();
-	};
 	return (
 		<div className={style.container}>
 			{auth.name ? (
@@ -30,7 +23,9 @@ export const Auth = () => {
 					</button>
 					{showLogout ? <button
 						className={style.logout}
-						onClick={handleLogout}>Logout</button> : ''}
+						onClick={() => {
+							clearAuth();
+						}}>Logout</button> : ''}
 				</>
 				) : (
 					<Text className={style.authLink} As='a' href={urlAuth}>

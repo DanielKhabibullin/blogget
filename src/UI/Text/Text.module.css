@@ -2,16 +2,12 @@
 	text-align: center;
 }
 
-/* .left {
-	text-align: left;
-} */
+.medium {
+	font-weight: 500;
+}
 
 .bold {
 	font-weight: 700;
-}
-
-.medium {
-	font-weight: 500;
 }
 
 .black {
