@@ -49,13 +49,6 @@
 	height: 100%;
 }
 
-.content {
-	grid-area: content;
-	padding-top: 10px;
-	padding-right: 10px;
-	margin-bottom: 8px;
-}
-
 @media (min-width: 580px) {
 	.post {
 		grid-template-columns: 150px 1fr;

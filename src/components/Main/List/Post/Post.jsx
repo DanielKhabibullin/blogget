@@ -1,27 +1,30 @@
 import style from './Post.module.css';
 import PropTypes from 'prop-types';
 import Rating from './Rating';
-import Time from './Time';
-import Title from './Title';
-import Author from './Author';
+import Date from './Date';
 import {ReactComponent as DeleteIcon} from './img/delete.svg';
 import {Thumbnail} from './Thumbnail/Thumbnail';
+import {Content} from './Content/Content';
 
 
 export const Post = ({postData}) => {
-	const {title, author, ups, date, thumbnail} = postData;
+	const {
+		title,
+		author,
+		ups,
+		date,
+		thumbnail,
+		selftext: markdown,
+	} = postData;
 	return (
 		<li className={style.post}>
 			<Thumbnail title={title} thumbnail={thumbnail} />
+			<Content title={title} author={author} markdown={markdown} />
+			<Rating ups={ups} />
+			<Date date={date} />
 			<button className={style.delete}>
-				<DeleteIcon/>
+				<DeleteIcon />
 			</button>
-			<div className={style.content}>
-				<Title title={title}></Title>
-				<Author author={author}></Author>
-			</div>
-			<Rating ups={ups}></Rating>
-			<Time date={date}></Time>
 		</li>
 	);
 };

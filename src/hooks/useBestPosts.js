@@ -14,16 +14,17 @@ export const useBestPosts = () => {
 			});
 			const data = await response.json();
 			const postData = data.data.children.map(({
-				data: {title, thumbnail, author, ups, created}}) =>
+				data: {title, thumbnail, author, ups, selftext, created}}) =>
 				({
 					title,
 					thumbnail: /^https:\/\//.test(thumbnail) ?
 						thumbnail.replace(/\?.*$/, '') : '',
 					author,
 					ups,
+					selftext,
 					date: created
 				}));
-
+			// console.log(postData);
 			setPosts(postData);
 		} catch (err) {
 			console.warn(err);

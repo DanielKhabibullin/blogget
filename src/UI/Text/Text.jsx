@@ -14,7 +14,10 @@ export const Text = prop => {
 		href,
 		center,
 		left,
-		weight,
+		bold,
+		medium,
+		dateTime,
+		onClick,
 	} = prop;
 
 	const classes = classNames(
@@ -25,13 +28,17 @@ export const Text = prop => {
 		{[style[`fs${size}`]]: size},
 		{[style[`fst${tsize}`]]: tsize},
 		{[style[`fsd${dsize}`]]: dsize},
-		{[style.bold]: weight === 'bold'},
-		{[style.medium]: weight === 'medium'},
+		{[style.bold]: bold},
+		{[style.medium]: medium},
 	);
 
-	return (
-		<As className={classes} href={href}>{children}</As>
-	);
+	return <As className={classes}
+		href={href}
+		dateTime={dateTime}
+		onClick={onClick}
+	>
+		{children}
+	</As>;
 };
 
 Text.propTypes = {
@@ -54,5 +61,7 @@ Text.propTypes = {
 	]),
 	href: PropTypes.string,
 	center: PropTypes.bool,
-	weight: PropTypes.string,
+	bold: PropTypes.bool,
+	medium: PropTypes.bool,
+	onClick: PropTypes.func,
 };

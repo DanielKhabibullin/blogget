@@ -11,7 +11,7 @@ export const Rating = ({ups}) => (
 			size={12}
 			tsize={16}
 			color='grey99'
-			weight='bold'
+			bold
 		>
 			{ups}
 		</Text>
