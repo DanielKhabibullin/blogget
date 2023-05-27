@@ -5,10 +5,11 @@ import Post from './Post';
 
 export const List = () => {
 	const postsData = useContext(postsContext).posts;
+	console.log(postsData);
 	return (
 		<ul className={style.list}>
 			{
-				postsData.map((postData, index) => (<Post key={index}
+				postsData.map(postData => (<Post key={postData.id}
 					postData={postData} />))
 			}
 		</ul>

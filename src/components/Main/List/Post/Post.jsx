@@ -9,6 +9,7 @@ import {Content} from './Content/Content';
 
 export const Post = ({postData}) => {
 	const {
+		id,
 		title,
 		author,
 		ups,
@@ -19,7 +20,7 @@ export const Post = ({postData}) => {
 	return (
 		<li className={style.post}>
 			<Thumbnail title={title} thumbnail={thumbnail} />
-			<Content title={title} author={author} markdown={markdown} />
+			<Content id={id} title={title} author={author} markdown={markdown} />
 			<Rating ups={ups} />
 			<Date date={date} />
 			<button className={style.delete}>

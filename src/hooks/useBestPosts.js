@@ -14,8 +14,9 @@ export const useBestPosts = () => {
 			});
 			const data = await response.json();
 			const postData = data.data.children.map(({
-				data: {title, thumbnail, author, ups, selftext, created}}) =>
+				data: {id, title, thumbnail, author, ups, selftext, created}}) =>
 				({
+					id,
 					title,
 					thumbnail: /^https:\/\//.test(thumbnail) ?
 						thumbnail.replace(/\?.*$/, '') : '',
