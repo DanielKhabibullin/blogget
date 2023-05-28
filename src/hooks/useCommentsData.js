@@ -31,7 +31,9 @@ export const useCommentsData = id => {
 						},
 					},
 				]) => {
-					const comments = children.map(item => item.data);
+					const comments = children.map(item => item.data)
+						.filter(item => item.author !== '[deleted]');
+
 					setCommentsData([post, comments]);
 				},
 			)
