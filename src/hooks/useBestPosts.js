@@ -1,9 +1,9 @@
-import {useState, useEffect, useContext} from 'react';
+import {useState, useEffect} from 'react';
+import {useSelector} from 'react-redux';
 import {URL_API} from '../api/const';
-import {tokenContext} from '../context/tokenContext';
 
 export const useBestPosts = () => {
-	const {token} = useContext(tokenContext);
+	const token = useSelector(state => state.token);
 	const [posts, setPosts] = useState([]);
 	const fetchPosts = async () => {
 		try {

@@ -16,9 +16,3 @@ export const getToken = () => {
 
 	return token;
 };
-
-export const removeToken = () => {
-	localStorage.removeItem('bearer');
-	setToken('');
-	// location.assign('/');
-};
