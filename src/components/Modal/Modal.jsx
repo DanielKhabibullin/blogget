@@ -9,12 +9,12 @@ import {FormComment} from './FormComment/FormComment';
 import {useCommentsData} from '../../hooks/useCommentsData';
 import {Comments} from './Comments/Comments';
 
-export const Modal = ({id, title, author, markdown, closeModal}) => {
+export const Modal = ({id, closeModal}) => {
 	const overlayRef = useRef(null);
 	const [commentsData] = useCommentsData(id);
-	console.log(commentsData);
 	const [post, comments] = commentsData;
 	console.log(post);
+	console.log(comments);
 	const handleClick = e => {
 		const target = e.target;
 		if (target === overlayRef.current) {
@@ -47,7 +47,7 @@ export const Modal = ({id, title, author, markdown, closeModal}) => {
 							size={18}
 							tsize={24}
 						>
-							{title}
+							{post.title}
 						</Text>
 
 						<div className={style.content}>
@@ -58,12 +58,12 @@ export const Modal = ({id, title, author, markdown, closeModal}) => {
 									},
 								},
 							}}}>
-								{markdown}
+								{post.selftext}
 							</Markdown>
 						</div>
 						<Text As='p' className={style.author}
 							color='orange'
-						>{author}</Text>
+						>{post.author}</Text>
 						<FormComment />
 						<Comments comments={comments} />
 						<button className={style.close} onClick={closeModal}>
@@ -80,8 +80,5 @@ export const Modal = ({id, title, author, markdown, closeModal}) => {
 
 Modal.propTypes = {
 	id: PropTypes.string,
-	title: PropTypes.string,
-	author: PropTypes.string,
-	markdown: PropTypes.string,
 	closeModal: PropTypes.func,
 };
