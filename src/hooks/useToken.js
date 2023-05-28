@@ -18,7 +18,6 @@ export const useToken = (state) => {
 	useEffect(() => {
 		if (token) {
 			localStorage.setItem('bearer', token);
-			setToken('');
 		}
 	}, [token]);
 

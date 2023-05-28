@@ -25,7 +25,6 @@ export const useBestPosts = () => {
 					selftext,
 					date: created
 				}));
-			// console.log(postData);
 			setPosts(postData);
 		} catch (err) {
 			console.warn(err);

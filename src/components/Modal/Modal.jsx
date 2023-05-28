@@ -13,15 +13,12 @@ export const Modal = ({id, closeModal}) => {
 	const overlayRef = useRef(null);
 	const [commentsData] = useCommentsData(id);
 	const [post, comments] = commentsData;
-	console.log(post);
-	console.log(comments);
 	const handleClick = e => {
 		const target = e.target;
 		if (target === overlayRef.current) {
 			closeModal();
 		}
 	};
-
 	const handleKeyDown = e => {
 		if (e.key === 'Escape') {
 			closeModal();

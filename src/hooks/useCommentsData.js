@@ -6,7 +6,7 @@ export const useCommentsData = id => {
 	const {token} = useContext(tokenContext);
 	const [commentsData, setCommentsData] = useState([]);
 	useEffect(() => {
-		// if (!token) return;
+		if (!token) return;
 		fetch(`${URL_API}/comments/${id}`, {
 			headers: {
 				Authorization: `bearer ${token}`,
@@ -32,7 +32,6 @@ export const useCommentsData = id => {
 					},
 				]) => {
 					const comments = children.map(item => item.data);
-					console.log(comments);
 					setCommentsData([post, comments]);
 				},
 			)
