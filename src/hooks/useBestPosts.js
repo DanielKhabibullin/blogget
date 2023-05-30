@@ -3,11 +3,11 @@ import {useSelector} from 'react-redux';
 import {URL_API} from '../api/const';
 
 export const useBestPosts = () => {
-	const token = useSelector(state => state.token);
+	const token = useSelector(state => state.token.token);
 	const [posts, setPosts] = useState([]);
 	const fetchPosts = async () => {
 		try {
-			const response = await fetch(`${URL_API}/best`, {
+			const response = await fetch(`${URL_API}/best?limit=20`, {
 				headers: {
 					Authorization: `bearer ${token}`,
 				},

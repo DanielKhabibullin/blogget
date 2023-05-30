@@ -3,8 +3,8 @@ export const setToken = token => {
 };
 
 export const getToken = () => {
-	let token = '';
-	if (location.pathname.includes('/auth')) {
+	let token = localStorage.getItem('bearer') || '';
+	if (!token && location.pathname.includes('/auth')) {
 		token = new URLSearchParams(location.hash.substring(1))
 			.get('access_token');
 		setToken(token);
