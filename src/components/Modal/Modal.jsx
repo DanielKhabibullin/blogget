@@ -8,10 +8,12 @@ import {Text} from '../../UI/Text/Text';
 import {FormComment} from './FormComment/FormComment';
 import {useCommentsData} from '../../hooks/useCommentsData';
 import {Comments} from './Comments/Comments';
+import {Preloader} from '../../UI/Preloader/Preloader';
+
 
 export const Modal = ({id, closeModal}) => {
 	const overlayRef = useRef(null);
-	const [commentsData] = useCommentsData(id);
+	const [commentsData, status] = useCommentsData(id);
 	const [post, comments] = commentsData;
 	const handleClick = e => {
 		const target = e.target;
@@ -37,8 +39,13 @@ export const Modal = ({id, closeModal}) => {
 	return ReactDOM.createPortal(
 		<div className={style.overlay} ref={overlayRef}>
 			<div className={style.modal}>
-				{
-					post ?
+				{status === 'loading' && <Preloader size={200}/>}
+				{status === 'error' && (
+					<Text As='h2' className={style.title}>
+						Ошибка
+					</Text>
+				)}
+				{status === 'loaded' && (
 					<>
 						<Text As='h2' className={style.title}
 							size={18}
@@ -63,12 +70,11 @@ export const Modal = ({id, closeModal}) => {
 						>{post.author}</Text>
 						<FormComment />
 						<Comments comments={comments} />
-						<button className={style.close} onClick={closeModal}>
+						<button className={style.close} onClick={() => closeModal()}>
 							<CloseIcon />
 						</button>
-					</> :
-				<Text As='p' className={style.title} >Loading...</Text>
-				}
+					</>
+				)}
 			</div>
 		</div>,
 		document.getElementById('modal-root')

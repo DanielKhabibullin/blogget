@@ -1,6 +1,6 @@
-import formatDate from '../../../../../utils/formatDate';
 import style from './Date.module.css';
 import PropTypes from 'prop-types';
+import {formatDate} from '../../../../../utils/formatDate';
 import {Text} from '../../../../../UI/Text/Text';
 
 export const Date = ({date}) => (
