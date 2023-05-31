@@ -3,7 +3,7 @@ import {composeWithDevTools} from '@redux-devtools/extension';
 import {commentReducer} from './commentReducer';
 import thunk from 'redux-thunk';
 import {authReducer} from './auth/authReducer';
-import {postsReducer} from './posts/postsReducer';
+import {postsDataReducer} from './posts/postsDataReducer';
 import {commentsDataReducer} from './comment/commentsDataReducer';
 import {tokenReducer} from './token/tokenReducer';
 import {tokenMiddleware} from './token/tokenAction';
@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
 	token: tokenReducer,
 	comment: commentReducer,
 	auth: authReducer,
-	posts: postsReducer,
+	posts: postsDataReducer,
 	commentsData: commentsDataReducer,
 });
 

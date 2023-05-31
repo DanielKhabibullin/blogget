@@ -7,6 +7,7 @@ import {Preloader} from '../../../UI/Preloader/Preloader';
 import {Text} from '../../../UI/Text/Text';
 import style from './Auth.module.css';
 import {ReactComponent as LoginIcon} from './img/login.svg';
+import {Notification} from './Notification/Notification';
 
 export const Auth = () => {
 	const [showLogout, setShowLogout] = useState(false);
@@ -15,7 +16,7 @@ export const Auth = () => {
 	const getOut = () => {
 		setShowLogout(!showLogout);
 	};
-	// TODO
+
 	const logOut = () => {
 		dispatch(deleteToken());
 		clearAuth();
@@ -36,17 +37,20 @@ export const Auth = () => {
 						/>
 						<Text>{auth.name}</Text>
 					</button>
-					{showLogout ? <button
-						className={style.logout}
-						onClick={logOut}>
-						Logout
-					</button> : ''}
 				</>
 				) : (
-					<Text className={style.authLink} As='a' href={urlAuth}>
-						<LoginIcon className={style.svg}/>
-					</Text>
+					<>
+						<Notification />
+						<Text className={style.authLink} As='a' href={urlAuth}>
+							<LoginIcon className={style.svg}/>
+						</Text>
+					</>
 				)}
+			{showLogout ? <button
+				className={style.logout}
+				onClick={logOut}>
+				Logout
+			</button> : ''}
 		</div>
 	);
 };

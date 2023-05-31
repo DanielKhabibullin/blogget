@@ -2,7 +2,7 @@ import {
 	POSTS_REQUEST,
 	POSTS_REQUEST_ERROR,
 	POSTS_REQUEST_SUCCESS
-} from './postsAction';
+} from './postsDataAction';
 
 const initialState = {
 	loading: false,
@@ -10,7 +10,7 @@ const initialState = {
 	error: '',
 };
 
-export const postsReducer = (state = initialState, action) => {
+export const postsDataReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case POSTS_REQUEST:
 			return {
