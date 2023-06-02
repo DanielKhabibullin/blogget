@@ -6,7 +6,7 @@ import {
 
 const initialState = {
 	loading: false,
-	data: [],
+	posts: [],
 	error: '',
 };
 
@@ -22,7 +22,7 @@ export const postsDataReducer = (state = initialState, action) => {
 			return {
 				...state,
 				status: 'loaded',
-				data: action.data,
+				posts: action.posts,
 				error: '',
 			};
 		case POSTS_REQUEST_ERROR:
