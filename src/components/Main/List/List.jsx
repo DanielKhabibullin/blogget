@@ -12,7 +12,6 @@ export const List = () => {
 	const endList = useRef(null);
 	const dispatch = useDispatch();
 	useEffect(() => {
-		if (!postsData.length) return;
 		const observer = new IntersectionObserver((entries) => {
 			if (entries[0].isIntersecting) {
 				dispatch(postsRequestAsync());
@@ -20,7 +19,9 @@ export const List = () => {
 		}, {
 			rootMargin: '100px',
 		});
-		observer.observe(endList.current);
+		if (endList.current) {
+			observer.observe(endList.current);
+		}
 	}, [endList.current]);
 
 	return (
