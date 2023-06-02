@@ -9,6 +9,7 @@ export const FormComment = () => {
 	const value = useSelector(state => state.comment.comment);
 	const dispatch = useDispatch();
 	const [auth] = useAuth();
+	// const auth = useSelector(state => state.auth.data);
 	const textareaRef = useRef(null);
 	const [showForm, setShowForm] = useState(false);
 
