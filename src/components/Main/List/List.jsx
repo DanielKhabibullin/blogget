@@ -9,17 +9,19 @@ import Post from './Post';
 
 export const List = () => {
 	const postsData = useSelector((state) => state.posts.posts);
+	console.log('postsData: ', postsData);
 	const status = useSelector((state) => state.posts.status);
 	const endList = useRef(null);
 	const dispatch = useDispatch();
+	// useEffect(() => {
+	// 	dispatch(postsRequestAsync());
+	// }, []);
 	useEffect(() => {
-		dispatch(postsRequestAsync());
-	}, []);
-	useEffect(() => {
-		if (!postsData.length) return;
+		// if (!postsData.length) return;
 		const observer = new IntersectionObserver((entries) => {
 			if (entries[0].isIntersecting) {
 				dispatch(postsRequestAsync());
+				console.log('see see');
 			}
 		}, {
 			rootMargin: '100px',
