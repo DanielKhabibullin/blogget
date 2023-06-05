@@ -1,8 +1,10 @@
+/* eslint-disable no-tabs */
 import axios from 'axios';
 import {URL_API} from '../../api/const';
 
 export const POSTS_REQUEST = 'POSTS_REQUEST';
 export const POSTS_REQUEST_SUCCESS = 'POSTS_REQUEST_SUCCESS';
+export const POSTS_REQUEST_SUCCESS_AFTER = 'POSTS_REQUEST_SUCCESS_AFTER';
 export const POSTS_REQUEST_ERROR = 'POSTS_REQUEST_ERROR';
 
 export const postsRequest = () => ({
@@ -12,42 +14,43 @@ export const postsRequest = () => ({
 export const postsRequestSuccess = data => ({
 	type: POSTS_REQUEST_SUCCESS,
 	posts: data.children,
+	after: data.after,
+});
+
+export const postsRequestSuccessAfter = (data) => ({
+	type: POSTS_REQUEST_SUCCESS_AFTER,
+	posts: data.children,
+	after: data.after,
 });
 
 export const postsRequestError = error => ({
 	type: POSTS_REQUEST_ERROR,
-	error
+	error,
 });
 
 export const postsRequestAsync = () => async (dispatch, getState) => {
 	const token = getState().token.token;
-	if (!token) return;
+	const after = getState().posts.after;
+	const loading = getState().posts.status;
+	console.log(loading);
+	const isLast = getState().posts.isLast;
+	if (!token || loading === 'loading' || isLast) return;
 	dispatch(postsRequest());
-	axios(`${URL_API}/best?limit=20`, {
+
+	axios(`${URL_API}/best?limit=10&${after ? `after=${after}` : ''}`, {
 		headers: {
 			Authorization: `bearer ${token}`,
 		},
 	})
 		.then(({data}) => {
-			dispatch(postsRequestSuccess(data.data));
+			if (after) {
+				dispatch(postsRequestSuccessAfter(data.data));
+			} else {
+				dispatch(postsRequestSuccess(data.data));
+			}
 		})
 		.catch((err) => {
 			console.error(err);
 			dispatch(postsRequestError(err.toString()));
 		});
 };
-
-// const data = await response.json();
-// const postData = data.data.children.map(({
-// data: {id, title, thumbnail, author, ups, selftext, created}}) =>
-// ({
-// id,
-// title,
-// thumbnail: /^https:\/\//.test(thumbnail) ?
-// thumbnail.replace(/\?.*$/, '') : '',
-// author,
-// ups,
-// selftext,
-// date: created
-// }));
-// setPosts(postData);

@@ -1,4 +1,7 @@
-import {useSelector} from 'react-redux';
+/* eslint-disable no-tabs */
+import {useEffect, useRef} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {postsRequestAsync} from '../../../store/posts/postsDataAction';
 import {Preloader} from '../../../UI/Preloader/Preloader';
 import {Text} from '../../../UI/Text/Text';
 import style from './List.module.css';
@@ -7,6 +10,23 @@ import Post from './Post';
 export const List = () => {
 	const postsData = useSelector((state) => state.posts.posts);
 	const status = useSelector((state) => state.posts.status);
+	const endList = useRef(null);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(postsRequestAsync());
+	});
+	useEffect(() => {
+		if (!postsData.length) return;
+		const observer = new IntersectionObserver((entries) => {
+			if (entries[0].isIntersecting) {
+				dispatch(postsRequestAsync());
+			}
+		}, {
+			rootMargin: '100px',
+		});
+		observer.observe(endList.current);
+	}, [endList.current]);
+
 	return (
 		<>
 			{status === 'loading' && <Preloader size={200} />}
@@ -18,9 +38,10 @@ export const List = () => {
 			{status === 'loaded' && (
 				<ul className={style.list}>
 					{
-						postsData.map(({data}) => (<Post key={data.id}
-							postData={data} />))
+						postsData.map(postData => (<Post key={postData.id}
+							postData={postData.data} />))
 					}
+					<li ref={endList} className={style.end}/>
 				</ul>
 			)}
 		</>
