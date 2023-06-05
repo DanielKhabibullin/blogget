@@ -1,3 +1,4 @@
+/* eslint-disable no-tabs */
 import {
 	POSTS_REQUEST,
 	POSTS_REQUEST_ERROR,

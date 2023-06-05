@@ -8,20 +8,24 @@ import Post from './Post';
 
 export const List = () => {
 	const postsData = useSelector((state) => state.posts.posts);
+	console.log('postsData: ', postsData);
 	const status = useSelector((state) => state.posts.status);
 	const endList = useRef(null);
 	const dispatch = useDispatch();
+	// useEffect(() => {
+	// dispatch(postsRequestAsync());
+	// }, []);
 	useEffect(() => {
+		// if (!postsData.length) return;
 		const observer = new IntersectionObserver((entries) => {
 			if (entries[0].isIntersecting) {
 				dispatch(postsRequestAsync());
+				console.log('see see');
 			}
 		}, {
 			rootMargin: '100px',
 		});
-		if (endList.current) {
-			observer.observe(endList.current);
-		}
+		observer.observe(endList.current);
 	}, [endList.current]);
 
 	return (
@@ -35,8 +39,8 @@ export const List = () => {
 			{status === 'loaded' && (
 				<ul className={style.list}>
 					{
-						postsData.map(({data}) => (<Post key={data.id}
-							postData={data} />))
+						postsData.map(postData => (<Post key={postData.id}
+							postData={postData.data} />))
 					}
 					<li ref={endList} className={style.end}/>
 				</ul>

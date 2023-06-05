@@ -1,3 +1,4 @@
+/* eslint-disable no-tabs */
 import axios from 'axios';
 import {URL_API} from '../../api/const';
 
@@ -34,6 +35,7 @@ export const postsRequestAsync = () => async (dispatch, getState) => {
 	const isLast = getState().posts.isLast;
 	if (!token || loading === 'loading' || isLast) return;
 	dispatch(postsRequest());
+
 	axios(`${URL_API}/best?limit=10&${after ? `after=${after}` : ''}`, {
 		headers: {
 			Authorization: `bearer ${token}`,
