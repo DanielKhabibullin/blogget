@@ -14,7 +14,7 @@ export const List = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(postsRequestAsync());
-	});
+	}, []);
 	useEffect(() => {
 		if (!postsData.length) return;
 		const observer = new IntersectionObserver((entries) => {

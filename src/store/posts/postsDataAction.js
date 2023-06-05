@@ -32,7 +32,6 @@ export const postsRequestAsync = () => async (dispatch, getState) => {
 	const token = getState().token.token;
 	const after = getState().posts.after;
 	const loading = getState().posts.status;
-	console.log(loading);
 	const isLast = getState().posts.isLast;
 	if (!token || loading === 'loading' || isLast) return;
 	dispatch(postsRequest());
