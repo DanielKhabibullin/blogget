@@ -15,26 +15,20 @@ export const Modal = () => {
 	const {id, page} = useParams();
 	const navigate = useNavigate();
 	const overlayRef = useRef(null);
-	const [commentsData, status] = useCommentsData(id);
-	const [post, comments] = commentsData;
+	const [commentsData, post, status] = useCommentsData(id);
 	const handleClick = e => {
 		const target = e.target;
-		if (target === overlayRef.current) {
-			navigate(`/category/${page}`);
-		}
-	};
-	const handleKeyDown = e => {
-		if (e.key === 'Escape') {
+		if (target === overlayRef.current || e.key === 'Escape') {
 			navigate(`/category/${page}`);
 		}
 	};
 
 	useEffect(() => {
 		document.addEventListener('click', handleClick);
-		document.addEventListener('keydown', handleKeyDown);
+		document.addEventListener('keydown', handleClick);
 		return () => {
 			document.removeEventListener('click', handleClick);
-			document.removeEventListener('keydown', handleKeyDown);
+			document.removeEventListener('keydown', handleClick);
 		};
 	}, []);
 
@@ -44,7 +38,7 @@ export const Modal = () => {
 				{status === 'loading' && <Preloader size={200}/>}
 				{status === 'error' && (
 					<Text As='h2' className={style.title}>
-						Ошибка
+						Error
 					</Text>
 				)}
 				{status === 'loaded' && (
@@ -71,7 +65,7 @@ export const Modal = () => {
 							color='orange'
 						>{post.author}</Text>
 						<FormComment />
-						<Comments comments={comments} />
+						<Comments comments={commentsData} />
 						<button className={style.close}
 							onClick={() => navigate(`/category/${page}`)}
 						>

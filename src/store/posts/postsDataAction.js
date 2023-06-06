@@ -44,6 +44,7 @@ export const postsRequestAsync = (newPage) => async (dispatch, getState) => {
 	const after = getState().posts.after;
 	const loading = getState().posts.status;
 	const isLast = getState().posts.isLast;
+	// const posts = getState().posts.posts;
 	if (!token || loading === 'loading' || loading === 'error' || isLast) return;
 	dispatch(postsRequest());
 

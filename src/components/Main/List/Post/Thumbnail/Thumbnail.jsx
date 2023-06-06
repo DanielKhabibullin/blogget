@@ -4,7 +4,7 @@ import notphoto from './img/notphoto.jpg';
 
 export const Thumbnail = ({thumbnail, title}) => (
 	<img className={style.img}
-		src={thumbnail ? thumbnail : notphoto} alt={title} />
+		src={thumbnail === 'self' ? notphoto : thumbnail} alt={title} />
 );
 
 Thumbnail.propTypes = {

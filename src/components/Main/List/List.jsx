@@ -15,7 +15,6 @@ export const List = () => {
 	const dispatch = useDispatch();
 	const {page} = useParams();
 	const [scrollCount, setScrollCount] = useState(null);
-	console.log('scrollCount: ', scrollCount);
 
 	useEffect(() => {
 		dispatch(postsRequestAsync(page));
@@ -63,7 +62,7 @@ export const List = () => {
 				<li ref={endList} className={style.end}/>
 			</ul>
 			<Outlet />
-			{<button className={style.btn}
+			{scrollCount <= 0 && <button className={style.btn}
 				onClick={handleLoadMore}>Load More</button>}
 		</>
 		// 	)}
