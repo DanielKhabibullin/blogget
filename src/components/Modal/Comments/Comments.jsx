@@ -7,14 +7,14 @@ export const Comments = ({comments}) => (
 	comments.length ?
 		<ul className={style.list}>
 			{
-				comments.map(({id, author, body, created}) => (
-					<li key={id} className={style.item}>
+				comments.map(comment => comment.body && (
+					<li key={comment.id} className={style.item}>
 						<Text As='h3' className={style.author}
-							size={18} tsize={22}>{author}</Text>
+							size={18} tsize={22}>{comment.author}</Text>
 						<Text As='p' className={style.comment} size={14} tsize={18}>
-							{body}
+							{comment.body.replaceAll(`&gt;`, '')}
 						</Text>
-						<Date date={created} />
+						<Date date={comment.created} />
 					</li>
 				))
 			}

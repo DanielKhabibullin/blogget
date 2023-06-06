@@ -1,5 +1,6 @@
 /* eslint-disable no-tabs */
 import {
+	CHANGE_PAGE,
 	POSTS_REQUEST,
 	POSTS_REQUEST_ERROR,
 	POSTS_REQUEST_SUCCESS,
@@ -12,6 +13,7 @@ const initialState = {
 	error: '',
 	after: '',
 	isLast: false,
+	page: '',
 };
 
 export const postsDataReducer = (state = initialState, action) => {
@@ -45,6 +47,13 @@ export const postsDataReducer = (state = initialState, action) => {
 				...state,
 				status: 'error',
 				error: action.error,
+			};
+		case CHANGE_PAGE:
+			return {
+				...state,
+				page: action.page,
+				after: '',
+				isLast: false,
 			};
 		default:
 			return state;
