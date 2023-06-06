@@ -15,6 +15,7 @@ export const List = () => {
 	const dispatch = useDispatch();
 	const {page} = useParams();
 	const [scrollCount, setScrollCount] = useState(null);
+	console.log('scrollCount: ', scrollCount);
 
 	useEffect(() => {
 		dispatch(postsRequestAsync(page));

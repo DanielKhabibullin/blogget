@@ -1,6 +1,6 @@
 import {commentReducer} from './commentReducer';
 import {authReducer} from './auth/authReducer';
-import {postsDataReducer} from './posts/postsDataReducer';
+import postsReducer from './posts/postsDataSlice';
 import commentsDataReducer from './comment/commentsDataSlice';
 import {tokenReducer} from './token/tokenReducer';
 import {tokenMiddleware} from './token/tokenAction';
@@ -11,7 +11,7 @@ export const store = configureStore({
 		token: tokenReducer,
 		comment: commentReducer,
 		auth: authReducer,
-		posts: postsDataReducer,
+		posts: postsReducer,
 		commentsData: commentsDataReducer,
 	},
 	middleware: (getDefaultMiddleware) =>
