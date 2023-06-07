@@ -6,7 +6,7 @@ export const Notification = () =>
 		<div className={style.wrapper}>
 			<div className={style.icon}></div>
 			<div className={style.notify}>
-				{`Error with user's authorization data`}
+				{`Please, log in to your account`}
 			</div>
 		</div>,
 		document.getElementById('notification-root')

@@ -10,6 +10,13 @@
 	flex-basis: 100%;
 }
 
+.btnWrapper {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+
 .btn {
 	display: block;
 	margin-left: auto;
