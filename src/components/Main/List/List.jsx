@@ -80,27 +80,5 @@ export const List = () => {
 			</ul>
 			<Outlet />
 		</>
-		// <>
-		// 	{status === 'loading' && <Preloader size={200} />}
-		// 	{status === 'error' && (
-		// 		<Text As='h2' className={style.title}>
-		// 			Error
-		// 		</Text>
-		// 	)}
-		// 	{status === 'loaded' && (
-		// <>
-		// 	<ul className={style.list}>
-		// 		{
-		// 			postsData.map(postData => (<Post key={postData.data.id}
-		// 				postData={postData.data} />))
-		// 		}
-		// 		<li ref={endList} className={style.end}/>
-		// 	</ul>
-		// 	<Outlet />
-		// 	{scrollCount <= 0 && <button className={style.btn}
-		// 		onClick={handleLoadMore}>Load More</button>}
-		// </>
-		// 	)}
-		// </>
 	);
 };
